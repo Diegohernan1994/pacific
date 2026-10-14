@@ -1,0 +1,149 @@
+---
+// FeaturedProjects.astro — Arvune "Projects" structure
+// Desktop: Left column (pill + title / Year · Location at bottom) + Right column (parallax image + description + CTA)
+// Mobile: stacked
+const projects = [
+  {
+    category: "New Construction",
+    title: "The Bel Air Residence",
+    year: "2024",
+    location: "Bel Air, Los Angeles",
+    description: "A ground-up custom estate balancing modern mineral architecture, extensive glass walls, and seismic-engineered foundation.",
+    image: "/assets/images/BD22_1-1-scaled.jpg"
+  },
+  {
+    category: "Guest House & ADU",
+    title: "Encino Modern ADU & Pool House",
+    year: "2024",
+    location: "Encino, CA",
+    description: "Architectural two-bedroom accessory dwelling unit with open kitchen, independent utilities, and seamless indoor-outdoor patio integration.",
+    image: "/assets/images/charming-yellow-house-with-wooden-windows-green-grassy-garden-1.webp"
+  },
+  {
+    category: "Interior Remodeling",
+    title: "Beverly Hills Gourmet Kitchen",
+    year: "2023",
+    location: "Beverly Hills, CA",
+    description: "Full chef's kitchen redesign featuring custom walnut millwork, bookmatched quartz countertops, and concealed high-efficiency appliances.",
+    image: "/assets/images/Kitchen-1.jpg"
+  },
+  {
+    category: "Home Addition",
+    title: "Woodland Hills Master Suite & Addition",
+    year: "2023",
+    location: "Woodland Hills, CA",
+    description: "Spacious master bedroom and spa bathroom addition with vaulted ceilings, walk-in double shower, and energy-efficient climate zoning.",
+    image: "/assets/images/BD28_1-scaled.jpg"
+  }
+];
+
+const heading = "Timeless Masterpieces Built with Precision";
+const words = heading.split(" ");
+let charIndex = 0;
+---
+
+<section id="projects" class="bg-white pt-28 lg:pt-[120px] pb-28 lg:pb-[120px]">
+  <div class="arvune-container">
+
+    <!-- Section Header -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-end mb-16 lg:mb-[80px]">
+      <div class="lg:col-span-7 space-y-5">
+        <div class="reveal inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-zinc-400">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-red"></span>
+          <span>Featured Projects</span>
+        </div>
+        <h2 class="arvune-split text-[40px] sm:text-[56px] lg:text-[64px] font-semibold uppercase tracking-[-0.05em] text-[#0D0F0F] leading-[1]" aria-label={heading}>
+          {words.map((word, wi) => (
+            <>
+              <span class="whitespace-nowrap inline-block" aria-hidden="true">
+                {word.split("").map((ch) => (
+                  <span class="arvune-char" style={`--ci:${charIndex++}`}>{ch}</span>
+                ))}
+              </span>{wi < words.length - 1 ? " " : ""}
+            </>
+          ))}
+        </h2>
+      </div>
+      <div class="lg:col-span-5 lg:pl-10">
+        <p class="reveal delay-2 border-l border-brand-border pl-6 text-base lg:text-[18px] text-zinc-600 leading-[1.6] max-w-[480px] lg:ml-auto">
+          A curated portfolio of our recent custom homes, architectural ADUs, and luxury renovations delivered across Los Angeles County.
+        </p>
+      </div>
+    </div>
+
+    <!-- Project Cards -->
+    <div class="flex flex-col gap-16 lg:gap-[104px]">
+      {projects.map((proj) => (
+        <article class="arvune-project reveal flex flex-col lg:flex-row gap-6">
+
+          <!-- Left column -->
+          <div class="lg:w-[30%] lg:shrink-0 flex flex-col justify-between gap-6">
+            <div class="space-y-4">
+              <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-zinc-500">
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-red"></span>
+                <span>{proj.category}</span>
+              </div>
+              <h3 class="text-[24px] sm:text-[28px] font-semibold tracking-[-0.04em] text-[#0D0F0F] leading-[1.15]">
+                {proj.title}
+              </h3>
+            </div>
+
+            <!-- Year · Location (bottom-aligned on desktop) -->
+            <div class="hidden lg:flex border-t border-brand-border pt-5">
+              <div class="pr-6 border-r border-brand-border">
+                <span class="block text-[15px] font-medium uppercase tracking-[-0.02em] text-[#0D0F0F]">Year</span>
+                <span class="block mt-2 text-sm uppercase tracking-wide text-zinc-500">{proj.year}</span>
+              </div>
+              <div class="pl-6">
+                <span class="block text-[15px] font-medium uppercase tracking-[-0.02em] text-[#0D0F0F]">Location</span>
+                <span class="block mt-2 text-sm uppercase tracking-wide text-zinc-500">{proj.location}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right column -->
+          <div class="flex-1 min-w-0 flex flex-col gap-6">
+            <a href="#contact" class="arvune-parallax-container block aspect-[4/3] lg:aspect-auto lg:h-[645px] bg-zinc-200" aria-label={proj.title}>
+              <img
+                src={proj.image}
+                alt={proj.title}
+                loading="lazy"
+                decoding="async"
+                data-parallax
+                class="arvune-parallax-img"
+              />
+            </a>
+
+            <!-- Mobile Year · Location -->
+            <div class="flex lg:hidden border-t border-brand-border pt-4">
+              <div class="pr-5 border-r border-brand-border">
+                <span class="block text-[13px] font-medium uppercase text-[#0D0F0F]">Year</span>
+                <span class="block mt-1 text-[13px] uppercase text-zinc-500">{proj.year}</span>
+              </div>
+              <div class="pl-5">
+                <span class="block text-[13px] font-medium uppercase text-[#0D0F0F]">Location</span>
+                <span class="block mt-1 text-[13px] uppercase text-zinc-500">{proj.location}</span>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-5">
+              <p class="text-base lg:text-[18px] text-zinc-600 leading-[1.6] max-w-[520px]">
+                {proj.description}
+              </p>
+              <a href="#contact" class="arvune-btn-dark group shrink-0 self-start">
+                <span>Inquire</span>
+                <span class="arvune-arrow-box-white">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>

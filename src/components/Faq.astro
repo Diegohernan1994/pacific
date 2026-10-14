@@ -1,0 +1,122 @@
+---
+// Faq.astro - 100% Arvune Dimensions & Animations
+const faqs = [
+  {
+    question: "What types of construction projects does Pacific West Home Builders specialize in?",
+    answer: "We specialize in high-end residential remodeling (custom kitchens, luxury master bathrooms, interior reconfigurations), architectural room additions, permitted detached ADUs (Accessory Dwelling Units) & guest houses, and complete ground-up custom home builds across Los Angeles County."
+  },
+  {
+    question: "Do you handle City of Los Angeles building permits and architectural plans?",
+    answer: "Yes, 100%. We provide complete design-build services. Our architects and structural engineers draft code-compliant blueprints, Title 24 energy calculations, and manage all submittals through the Los Angeles Department of Building and Safety (LADBS) or local municipal building departments until permits are fully approved."
+  },
+  {
+    question: "How does Pacific West handle project timelines and pricing transparency?",
+    answer: "Before any construction begins, we establish a transparent, detailed fixed-bid proposal. We eliminate budget creep through meticulous pre-construction planning. During the build, our dedicated on-site superintendents maintain clear daily communication and scheduled progress milestones."
+  },
+  {
+    question: "Can I build an ADU in my Los Angeles backyard, and what are the size limits?",
+    answer: "Under California and City of LA state mandates (AB 68, SB 13), most single-family zoned residential lots allow detached ADUs up to 1,200 sq. ft. plus Junior ADUs (JADUs) up to 500 sq. ft. We conduct comprehensive site evaluations to confirm exact setbacks, utility hookups, and maximum allowable square footage for your specific parcel."
+  },
+  {
+    question: "Are you licensed, bonded, and insured in the State of California?",
+    answer: "Yes. Pacific West Home Builders operates under California Contractors State License Board (CSLB) General Building Contractor License #1085000, fully bonded and backed by comprehensive General Liability and Workers' Compensation insurance policies for your complete protection."
+  }
+];
+---
+
+<section id="faqs" class="py-28 lg:py-36 bg-white border-b border-brand-border">
+  <div class="arvune-container space-y-16">
+    
+    <!-- Section Header (Arvune Grid) -->
+    <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 items-end border-b border-brand-border pb-10">
+      <div class="lg:col-span-8 space-y-3">
+        <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-zinc-400">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-red"></span>
+          <span>FAQs</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl lg:text-[56px] font-semibold uppercase tracking-[-0.05em] text-[#0D0F0F] leading-tight">
+          Frequently Asked Questions
+        </h2>
+      </div>
+      <div class="lg:col-span-4 lg:text-right space-y-4">
+        <p class="text-sm text-zinc-500 leading-relaxed font-normal text-left lg:text-right">
+          Everything you need to know before breaking ground on your luxury project.
+        </p>
+        <div>
+          <a 
+            href="#contact" 
+            class="arvune-btn-dark group"
+          >
+            <span>Contact Us</span>
+            <span class="arvune-arrow-box-white">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arvune Accordion List with Smooth CSS Grid Animation -->
+    <div class="reveal delay-1 space-y-0 divide-y divide-zinc-200 border-b border-zinc-200">
+      {faqs.map((faq, idx) => (
+        <div class="faq-item group py-7 sm:py-8 cursor-pointer">
+          <button 
+            type="button"
+            class="faq-trigger w-full flex items-center justify-between text-left gap-6 focus:outline-none"
+            aria-expanded="false"
+          >
+            <span class="text-base sm:text-[18px] font-bold uppercase tracking-tight text-[#0D0F0F] group-hover:text-brand-red transition-colors duration-200">
+              {faq.question}
+            </span>
+            <span class="faq-icon w-9 h-9 rounded-full border border-zinc-300 flex items-center justify-center text-sm font-bold text-[#0D0F0F] group-hover:border-[#0D0F0F] transition-all flex-shrink-0">
+              +
+            </span>
+          </button>
+          <div class="faq-collapse grid grid-rows-[0fr] transition-all duration-300 ease-in-out">
+            <div class="overflow-hidden">
+              <p class="pt-4 text-xs sm:text-sm text-zinc-600 leading-relaxed max-w-4xl font-normal">
+                {faq.answer}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  faqItems.forEach(item => {
+    const trigger = item.querySelector('.faq-trigger');
+    const collapse = item.querySelector('.faq-collapse');
+    const icon = item.querySelector('.faq-icon');
+
+    trigger?.addEventListener('click', () => {
+      const isOpen = collapse?.classList.contains('grid-rows-[1fr]');
+
+      // Close all other faqs
+      faqItems.forEach(otherItem => {
+        const otherCollapse = otherItem.querySelector('.faq-collapse');
+        const otherIcon = otherItem.querySelector('.faq-icon');
+        const otherTrigger = otherItem.querySelector('.faq-trigger');
+
+        otherCollapse?.classList.remove('grid-rows-[1fr]');
+        otherCollapse?.classList.add('grid-rows-[0fr]');
+        if (otherIcon) otherIcon.textContent = '+';
+        otherTrigger?.setAttribute('aria-expanded', 'false');
+      });
+
+      if (!isOpen) {
+        collapse?.classList.remove('grid-rows-[0fr]');
+        collapse?.classList.add('grid-rows-[1fr]');
+        if (icon) icon.textContent = '−';
+        trigger?.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>

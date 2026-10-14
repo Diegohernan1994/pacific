@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import AboutPreview from '../components/AboutPreview.astro';
+import FeaturedProjects from '../components/FeaturedProjects.astro';
+import ServicesGrid from '../components/ServicesGrid.astro';
+import Testimonials from '../components/Testimonials.astro';
+import JournalSection from '../components/JournalSection.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import Faq from '../components/Faq.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Pacific West Home Builders | Luxury Custom Homes, ADUs & Remodeling Los Angeles">
+  <Navbar />
+  <main class="w-full overflow-hidden">
+    <Hero />
+    <AboutPreview />
+    <FeaturedProjects />
+    <ServicesGrid />
+    <Testimonials />
+    <JournalSection />
+    <CtaBanner />
+    <Faq />
+  </main>
+  <Footer />
+</Layout>

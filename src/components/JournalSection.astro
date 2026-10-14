@@ -1,0 +1,97 @@
+---
+// JournalSection.astro - 100% Arvune Dimensions & Animations
+const articles = [
+  {
+    phase: "Phase 01 · Alignment",
+    title: "Let's Talk & Clear Parameters",
+    excerpt: "Schedule a detailed on-site consultation. We listen to your architectural goals, evaluate property constraints, and establish clear budgetary parameters before pencil hits paper.",
+    image: "/assets/images/BD15_1-scaled.jpg",
+    link: "#contact"
+  },
+  {
+    phase: "Phase 02 · Pre-Construction",
+    title: "Tailored Plans & LA Permitting",
+    excerpt: "Our engineers and designers prepare comprehensive architectural drawings, handle complete City of Los Angeles building permitting, and finalize material selections.",
+    image: "/assets/images/BD17_1-scaled.jpg",
+    link: "#contact"
+  },
+  {
+    phase: "Phase 03 · Execution",
+    title: "Precision Build & Key Handover",
+    excerpt: "Construction is executed with precision craftsmanship and daily superintendent oversight. You receive regular progress reports up until walkthrough and turnkey delivery.",
+    image: "/assets/images/BD20_1-scaled.jpg",
+    link: "#contact"
+  }
+];
+---
+
+<section id="journal" class="py-28 lg:py-36 bg-white border-b border-brand-border">
+  <div class="arvune-container space-y-16">
+    
+    <!-- Section Header (Arvune Grid) -->
+    <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 items-end border-b border-brand-border pb-10">
+      <div class="lg:col-span-8 space-y-3">
+        <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-zinc-400">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-red"></span>
+          <span>Process & Insights</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl lg:text-[56px] font-semibold uppercase tracking-[-0.05em] text-[#0D0F0F] leading-tight">
+          A Seamless Method From Concept to Handover
+        </h2>
+      </div>
+      <div class="lg:col-span-4 lg:text-right">
+        <a 
+          href="#contact" 
+          class="arvune-btn-dark group"
+        >
+          <span>Our Full Process</span>
+          <span class="arvune-arrow-box-white">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Arvune 3-Column Editorial Cards (Staggered Reveals & Image Zoom) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {articles.map((item, idx) => (
+        <article class={`reveal delay-${idx + 1} space-y-5 arvune-card-group group cursor-pointer`}>
+          <!-- Thumbnail Image with Parallax -->
+          <div class="arvune-parallax-container aspect-[16/10] bg-zinc-900 border border-brand-border">
+            <img 
+              src={item.image} 
+              alt={item.title} 
+              class="arvune-parallax-img"
+              data-parallax
+              data-parallax-speed="0.18"
+              loading="eager"
+            />
+          </div>
+
+          <!-- Phase Badge & Arrow Box -->
+          <div class="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-zinc-400 pt-1">
+            <span class="text-brand-red">{item.phase}</span>
+            <span class="w-7 h-7 flex items-center justify-center bg-[#0D0F0F] text-white group-hover:bg-brand-red transition-all duration-200">
+              <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </span>
+          </div>
+
+          <!-- Title -->
+          <h3 class="text-lg sm:text-xl font-semibold uppercase tracking-[-0.03em] text-[#0D0F0F] group-hover:text-brand-red transition-colors duration-200 leading-snug">
+            {item.title}
+          </h3>
+
+          <!-- Excerpt -->
+          <p class="text-xs sm:text-sm text-zinc-500 leading-relaxed font-normal">
+            {item.excerpt}
+          </p>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>

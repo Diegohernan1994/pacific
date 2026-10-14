@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-dark: #0D0F0F;
+  --brand-charcoal: #17150F;
+  --brand-red: #DE0000;
+  --brand-red-dark: #AB0000;
+  --brand-surface: #F5F4F7;
+  --brand-border: rgba(0, 0, 0, 0.08);
+  --framer-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: clip;
+  background-color: #ffffff;
+  color: #17150F;
+}
+
+body {
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Arvune Canvas Sizing & Architecture (1440px Canvas) */
+.arvune-container {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .arvune-container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .arvune-container {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+  }
+}
+
+/* Arvune Section Vertical Rhythm (120px) */
+.arvune-section {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  border-bottom: 1px solid var(--brand-border);
+}
+
+@media (min-width: 1024px) {
+  .arvune-section {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+/* Arvune Framer-Motion-Grade Smooth Reveal Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s var(--framer-ease), transform 0.8s var(--framer-ease);
+  will-change: opacity, transform;
+}
+
+.reveal.revealed {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+
+/* Fallback: if user prefers reduced motion or script is disabled */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Arvune Signature Button Specifications: Height = 52px */
+.arvune-btn-dark {
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding-left: 1.5rem;
+  padding-right: 0.5rem;
+  background-color: #0D0F0F;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 0px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.arvune-btn-dark:hover {
+  background-color: #DE0000;
+}
+
+.arvune-btn-white {
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding-left: 1.5rem;
+  padding-right: 0.5rem;
+  background-color: #FFFFFF;
+  color: #0D0F0F;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 0px;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.arvune-btn-white:hover {
+  background-color: #F5F4F7;
+  box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.3);
+}
+
+.arvune-arrow-box-white {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  color: #0D0F0F;
+  transition: transform 0.25s var(--framer-ease), color 0.25s ease;
+}
+
+.arvune-arrow-box-dark {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0D0F0F;
+  color: #FFFFFF;
+  transition: transform 0.25s var(--framer-ease), background-color 0.25s ease;
+}
+
+.arvune-btn-dark:hover .arvune-arrow-box-white {
+  color: #DE0000;
+}
+
+.arvune-btn-dark:hover svg,
+.arvune-btn-white:hover svg {
+  transform: translate(2px, -2px);
+  transition: transform 0.25s var(--framer-ease);
+}
+
+/* Image Zoom Hover Effect */
+.arvune-img-zoom {
+  transition: transform 0.8s var(--framer-ease);
+  will-change: transform;
+}
+
+.arvune-card-group:hover .arvune-img-zoom {
+  transform: scale(1.045);
+}
+
+/* Arvune Architectural Scroll Parallax (Framer parallaxSpeed 0.7 → image travels at 30% of scroll) */
+.arvune-parallax-container {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transform: translateZ(0);
+}
+
+.arvune-parallax-img {
+  position: absolute;
+  top: -15%;
+  left: 0;
+  width: 100%;
+  height: 130%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  pointer-events: none;
+  backface-visibility: hidden;
+}
+
+/* Arvune pill tag - clean borderless */
+.arvune-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #71717A;
+}
+
+/* Arvune per-character heading reveal (opacity 0 + translateY 10px, staggered) */
+.arvune-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s var(--framer-ease), transform 0.6s var(--framer-ease);
+  transition-delay: calc(var(--ci, 0) * 18ms);
+}
+
+.arvune-split.revealed .arvune-char {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arvune-char { opacity: 1; transform: none; transition: none; }
+}
+
+/* Lenis smooth scroll compatibility */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* Custom Minimal Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #bbb;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+/* Remove unwanted default browser focus rectangles on logo & clickable elements */
+a:focus, a:focus-visible, a:active,
+button:focus, button:focus-visible, button:active,
+img:focus, img:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+

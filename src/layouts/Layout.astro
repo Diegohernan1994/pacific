@@ -1,0 +1,139 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Pacific West Home Builders | Luxury Custom Homes & Remodeling Los Angeles",
+  description = "Premier Los Angeles general contractor specializing in custom home builds, architectural ADUs, kitchen & bath remodeling, and structural additions. Building luxury that lasts a lifetime."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/assets/logos/Pacific-West.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+  </head>
+  <body class="bg-white text-[#17150F] selection:bg-[#DE0000] selection:text-white">
+    <slot />
+
+    <!-- Arvune Smooth Scroll, Reveal & Architectural Parallax Engine -->
+    <script>
+      import Lenis from 'lenis';
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ---------- Scroll reveal ---------- */
+      function initObserver() {
+        const reveals = document.querySelectorAll('.reveal, .arvune-split');
+        if (!('IntersectionObserver' in window)) {
+          reveals.forEach((el) => el.classList.add('revealed'));
+          return;
+        }
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.05 }
+        );
+        reveals.forEach((el) => observer.observe(el));
+      }
+
+      /* ---------- Parallax ----------
+         Measured on the original template: image travels at 30% of scroll speed
+         (Framer parallaxSpeed 0.7), translate = 0 when the image box top sits ~80px
+         from the viewport top. Range is clamped dynamically so the image always
+         covers the visible part of its frame (never shows gaps). */
+      const parallaxItems: { img: HTMLElement; box: HTMLElement; mode: 'framer' | 'center'; speed: number }[] = [];
+
+      function collectParallax() {
+        document.querySelectorAll<HTMLElement>('[data-parallax]').forEach((img) => {
+          const box = (img.closest('.arvune-parallax-container') || img.parentElement) as HTMLElement;
+          if (!box) return;
+          const custom = img.getAttribute('data-parallax-speed');
+          parallaxItems.push({
+            img,
+            box,
+            mode: custom ? 'center' : 'framer',
+            speed: custom ? parseFloat(custom) : 0.3
+          });
+        });
+      }
+
+      function updateParallax() {
+        const vh = window.innerHeight;
+        const isDesktop = window.innerWidth >= 1024;
+
+        for (const item of parallaxItems) {
+          const r = item.box.getBoundingClientRect();
+          if (r.bottom < -100 || r.top > vh + 100) continue;
+
+          const boxH = r.height;
+          const buffer = (item.img.offsetHeight - boxH) / 2; // extra image above/below frame
+          const zeroTop = item.mode === 'framer' && isDesktop ? 80 : vh / 2 - boxH / 2;
+          const speed = isDesktop ? item.speed : Math.min(item.speed, 0.18);
+
+          let t = -(r.top - zeroTop) * speed;
+
+          // Dynamic clamp: keep visible part of the frame always covered
+          const maxT = buffer + Math.max(0, -r.top);
+          const minT = Math.min(boxH, vh - r.top) - boxH - buffer;
+          t = Math.max(minT, Math.min(maxT, t));
+
+          item.img.style.transform = `translate3d(0px, ${t.toFixed(2)}px, 0px)`;
+        }
+      }
+
+      function initAll() {
+        initObserver();
+        if (reduceMotion) return;
+
+        collectParallax();
+
+        // Smooth inertial scroll (the template scrolls the page with lerp easing)
+        const lenis = new Lenis({
+          lerp: 0.1,
+          wheelMultiplier: 1,
+          smoothWheel: true,
+          anchors: { offset: -80 }
+        });
+
+        lenis.on('scroll', updateParallax);
+
+        function raf(time: number) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        window.addEventListener('resize', updateParallax, { passive: true });
+        window.addEventListener('scroll', updateParallax, { passive: true });
+        updateParallax();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAll);
+      } else {
+        initAll();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,141 @@
+---
+// Navbar.astro - 100% Arvune Dimensions & Animations
+const navLinks = [
+  { name: "About" },
+  { name: "Projects" },
+  { name: "Services" },
+  { name: "Process" },
+  { name: "Reviews" },
+  { name: "FAQs" },
+];
+---
+
+<header id="site-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent py-5">
+  <div class="arvune-container flex items-center justify-between">
+    <!-- Brand Logo (Official Vector) -->
+    <a 
+      href="#" 
+      class="flex items-center group py-0.5 outline-none focus:outline-none focus:ring-0 active:outline-none focus-visible:outline-none border-none select-none" 
+      aria-label="Pacific West Home Builders"
+    >
+      <img 
+        src="/assets/logos/pacific-west-white.svg" 
+        alt="Pacific West Home Builders" 
+        class="h-14 sm:h-16 lg:h-[70px] w-auto object-contain transition-opacity duration-200 group-hover:opacity-90 outline-none border-none pointer-events-none" 
+      />
+    </a>
+
+    <!-- Desktop Navigation Items (Static Text) -->
+    <nav class="hidden md:flex items-center gap-8">
+      {navLinks.map(link => (
+        <span 
+          class="text-xs font-semibold uppercase tracking-wider text-zinc-300 select-none cursor-default"
+        >
+          {link.name}
+        </span>
+      ))}
+    </nav>
+
+    <!-- Desktop Actions (Phone + Arvune 52px Button) -->
+    <div class="hidden md:flex items-center gap-5">
+      <a href="tel:8883984499" class="text-xs font-bold tracking-wider text-zinc-300 hover:text-white transition-colors">
+        (888) 398-4499
+      </a>
+      <a 
+        href="#contact" 
+        class="arvune-btn-white group"
+      >
+        <span>Get Started</span>
+        <span class="arvune-arrow-box-dark">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+
+    <!-- Mobile 2-line Hamburger Trigger -->
+    <button 
+      id="menu-toggle" 
+      class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 text-white focus:outline-none"
+      aria-label="Toggle Navigation Menu"
+    >
+      <span class="w-6 h-[2px] bg-white transition-transform duration-300 origin-center" id="bar1"></span>
+      <span class="w-6 h-[2px] bg-white transition-transform duration-300 origin-center" id="bar2"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div 
+    id="mobile-drawer" 
+    class="md:hidden fixed inset-x-0 top-0 bg-[#0d0f0f] text-white transform -translate-y-full transition-transform duration-300 ease-in-out z-40 border-b border-white/10 px-6 pt-24 pb-8 space-y-6"
+  >
+    <div class="flex flex-col space-y-4">
+      {navLinks.map(link => (
+        <span 
+          class="text-lg font-bold uppercase tracking-tight text-zinc-300 py-1 border-b border-white/5 select-none cursor-default"
+        >
+          {link.name}
+        </span>
+      ))}
+    </div>
+
+    <div class="pt-4 space-y-4">
+      <a href="tel:8883984499" class="block text-sm font-bold tracking-wider text-zinc-400">
+        Direct: <span class="text-white">(888) 398-4499</span>
+      </a>
+      <a 
+        href="#contact" 
+        class="arvune-btn-white w-full group justify-between"
+      >
+        <span>Get Started</span>
+        <span class="arvune-arrow-box-dark">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header');
+  const toggle = document.getElementById('menu-toggle');
+  const drawer = document.getElementById('mobile-drawer');
+  const bar1 = document.getElementById('bar1');
+  const bar2 = document.getElementById('bar2');
+  let open = false;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      header?.classList.add('bg-[#0d0f0f]/95', 'backdrop-blur-md', 'py-4', 'border-b', 'border-white/10');
+      header?.classList.remove('bg-transparent', 'py-5');
+    } else {
+      header?.classList.remove('bg-[#0d0f0f]/95', 'backdrop-blur-md', 'py-4', 'border-b', 'border-white/10');
+      header?.classList.add('bg-transparent', 'py-5');
+    }
+  });
+
+  toggle?.addEventListener('click', () => {
+    open = !open;
+    if (open) {
+      drawer?.classList.remove('-translate-y-full');
+      bar1?.classList.add('rotate-45', 'translate-y-[4px]');
+      bar2?.classList.add('-rotate-45', '-translate-y-[4px]');
+    } else {
+      drawer?.classList.add('-translate-y-full');
+      bar1?.classList.remove('rotate-45', 'translate-y-[4px]');
+      bar2?.classList.remove('-rotate-45', '-translate-y-[4px]');
+    }
+  });
+
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      open = false;
+      drawer?.classList.add('-translate-y-full');
+      bar1?.classList.remove('rotate-45', 'translate-y-[4px]');
+      bar2?.classList.remove('-rotate-45', '-translate-y-[4px]');
+    });
+  });
+</script>

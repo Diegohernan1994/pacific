@@ -1,0 +1,111 @@
+---
+// Testimonials.astro - 100% Arvune Dimensions & Animations
+const testimonials = [
+  {
+    rating: 5,
+    quote: "Pacific West Home Builders did an outstanding job on my new home project. What was on-site every day was professionalism and attention to detail second to none. From start to finish, the follow-up was excellent.",
+    name: "Nancy A.",
+    location: "Encino, Los Angeles",
+    project: "New Construction & Renovation",
+    avatar: "/assets/testimonials/Nancy-A.webp"
+  },
+  {
+    rating: 5,
+    quote: "They made my ADU project so much easier than I expected. There were site challenges along the way, but they handled everything smoothly and always found the right solutions. I'm beyond happy with the results!",
+    name: "Barbara J.",
+    location: "Woodland Hills, CA",
+    project: "Detached Custom ADU",
+    avatar: "/assets/testimonials/Barbara-.J.webp"
+  },
+  {
+    rating: 5,
+    quote: "I can't say enough good things about Pacific West. They built the foundation for my ADU, and from day one, they made the whole process feel easy and stress-free. Reliable, hardworking, and caring about every measurement.",
+    name: "Juan I.",
+    location: "Los Angeles, CA",
+    project: "Foundation & Seismic Retrofit",
+    avatar: "/assets/testimonials/Juan-.I.webp"
+  }
+];
+---
+
+<section id="testimonials" class="py-28 lg:py-36 bg-white border-b border-brand-border">
+  <div class="arvune-container space-y-16">
+    
+    <!-- Section Header (Arvune Grid) -->
+    <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 items-end border-b border-brand-border pb-10">
+      <div class="lg:col-span-8 space-y-3">
+        <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-zinc-400">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-red"></span>
+          <span>Testimonials</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl lg:text-[56px] font-semibold uppercase tracking-[-0.05em] text-[#0D0F0F] leading-tight">
+          What Our Clients Are Saying
+        </h2>
+      </div>
+      <div class="lg:col-span-4 lg:text-right space-y-4">
+        <p class="text-sm text-zinc-500 leading-relaxed font-normal text-left lg:text-right">
+          Client perspectives on the value and craftsmanship of our delivered properties across Los Angeles.
+        </p>
+        <div>
+          <a 
+            href="#contact" 
+            class="arvune-btn-dark group"
+          >
+            <span>Get Started</span>
+            <span class="arvune-arrow-box-white">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arvune 3-Column Testimonial Cards (Staggered Reveals & Hover Lift) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {testimonials.map((item, idx) => (
+        <div class={`reveal delay-${idx + 1} p-8 sm:p-10 bg-[#F5F4F7] rounded-[16px] flex flex-col justify-between space-y-8 border border-black/[0.03] hover:-translate-y-1 transition-all duration-300 hover:shadow-lg`}>
+          
+          <div class="space-y-5">
+            <!-- 5 Black Stars -->
+            <div class="flex items-center gap-1 text-black text-sm tracking-widest">
+              {"★".repeat(item.rating)}
+            </div>
+
+            <!-- Big Bold Quote -->
+            <blockquote class="text-base sm:text-[18px] font-bold text-[#0D0F0F] leading-relaxed">
+              "{item.quote}"
+            </blockquote>
+          </div>
+
+          <!-- Bottom Row: Avatar, Info & Quote Icon -->
+          <div class="flex items-center justify-between pt-4 border-t border-black/[0.06]">
+            <div class="flex items-center gap-3.5">
+              <img 
+                src={item.avatar} 
+                alt={item.name} 
+                class="w-12 h-12 rounded-full object-cover border border-zinc-200"
+                loading="eager"
+              />
+              <div>
+                <span class="text-xs font-black uppercase tracking-wider text-[#0D0F0F] block">
+                  {item.name}
+                </span>
+                <span class="text-[11px] text-zinc-500 font-medium block">
+                  {item.location} · {item.project}
+                </span>
+              </div>
+            </div>
+
+            <span class="text-4xl font-serif text-zinc-300 font-black select-none">
+              ”
+            </span>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

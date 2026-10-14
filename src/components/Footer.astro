@@ -1,0 +1,188 @@
+---
+// Footer.astro - 100% Arvune Dimensions & Animations
+import PacificWestText from './PacificWestText.astro';
+---
+
+<footer class="bg-white pt-28 pb-10 border-t border-brand-border">
+  <div class="arvune-container">
+    
+    <!-- 4 Columns Grid (Arvune Signature Layout) -->
+    <div class="reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 pb-20 border-b border-brand-border">
+      
+      <!-- Col 1: Office Info & Official Brand Logo -->
+      <div class="lg:col-span-4 space-y-6">
+        <a href="#" class="inline-block group" aria-label="Pacific West Home Builders">
+          <img 
+            src="/assets/logos/pacific-west-dark.svg" 
+            alt="Pacific West Home Builders" 
+            class="h-14 sm:h-16 w-auto object-contain transition-opacity duration-200 group-hover:opacity-80" 
+          />
+        </a>
+        <div class="space-y-4">
+          <span class="text-[11px] font-bold uppercase tracking-widest text-zinc-400 block">
+            Office & Headquarters
+          </span>
+        <p class="text-xs text-zinc-600 leading-relaxed font-normal max-w-xs">
+          Pacific West Home Builders<br />
+          Serving Greater Los Angeles, Encino, Beverly Hills, Woodland Hills, and Southern California.
+        </p>
+        <div class="space-y-1 pt-2">
+          <a href="tel:8883984499" class="text-xl sm:text-2xl font-black text-[#0D0F0F] hover:text-brand-red transition-colors block">
+            (888) 398-4499
+          </a>
+          <a href="mailto:info@pwhbuilders.com" class="text-sm font-bold text-zinc-700 hover:text-brand-red transition-colors block">
+            info@pwhbuilders.com
+          </a>
+        </div>
+        <div class="text-[10px] uppercase font-bold tracking-wider text-zinc-400 pt-1">
+          CSLB Licensed General Contractor #1085000
+        </div>
+      </div>
+    </div>
+
+      <!-- Col 2: Stay Connected (Newsletter with 52px input & button) -->
+      <div class="lg:col-span-3 space-y-4">
+        <span class="text-[11px] font-bold uppercase tracking-widest text-zinc-400 block">
+          Stay Connected
+        </span>
+        <p class="text-xs text-zinc-600 font-normal">
+          Join our architectural newsletter and stay updated on luxury design trends and Los Angeles zoning changes.
+        </p>
+        <form class="flex items-center border border-zinc-300 mt-2 focus-within:border-[#0D0F0F] transition-colors" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+          <input 
+            type="email" 
+            placeholder="E-mail" 
+            required 
+            class="h-[52px] px-4 text-xs w-full focus:outline-none bg-transparent text-[#0D0F0F] placeholder-zinc-400"
+          />
+          <button 
+            type="submit" 
+            class="w-[52px] h-[52px] flex-shrink-0 flex items-center justify-center bg-[#0D0F0F] text-white hover:bg-brand-red transition-colors group"
+            aria-label="Submit Newsletter"
+          >
+            <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Col 3: Explore Navigation Links -->
+      <div class="lg:col-span-2 space-y-4">
+        <span class="text-[11px] font-bold uppercase tracking-widest text-zinc-400 block">
+          Explore
+        </span>
+        <ul class="space-y-2 text-xs font-semibold uppercase tracking-wider text-zinc-700">
+          <li><a href="#about" class="hover:text-brand-red transition-colors">About</a></li>
+          <li><a href="#projects" class="hover:text-brand-red transition-colors">Projects</a></li>
+          <li><a href="#services" class="hover:text-brand-red transition-colors">Services</a></li>
+          <li><a href="#journal" class="hover:text-brand-red transition-colors">Process</a></li>
+          <li><a href="#testimonials" class="hover:text-brand-red transition-colors">Reviews</a></li>
+          <li><a href="#faqs" class="hover:text-brand-red transition-colors">FAQs</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Social & Verified Reviews -->
+      <div class="lg:col-span-3 space-y-4">
+        <span class="text-[11px] font-bold uppercase tracking-widest text-zinc-400 block">
+          Verified Reviews
+        </span>
+        <ul class="space-y-2 text-xs font-semibold uppercase tracking-wider text-zinc-700">
+          <li>
+            <a href="https://www.yelp.com" target="_blank" rel="noopener noreferrer" class="hover:text-brand-red transition-colors flex items-center justify-between">
+              <span>Yelp Reviews</span>
+              <span class="text-zinc-400 font-normal">5.0 ★</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="hover:text-brand-red transition-colors flex items-center justify-between">
+              <span>Google Maps</span>
+              <span class="text-zinc-400 font-normal">5.0 ★</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-brand-red transition-colors">
+              Instagram
+            </a>
+          </li>
+          <li>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="hover:text-brand-red transition-colors">
+              Facebook
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Legal Sub-bar (Arvune Style) -->
+    <div class="py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 font-medium">
+      <div>
+        ©2026 Pacific West Home Builders®. All Rights Reserved
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="#privacy" class="hover:text-[#0D0F0F] transition-colors">Terms of Use</a>
+        <a href="#privacy" class="hover:text-[#0D0F0F] transition-colors">Privacy Policy</a>
+        <a 
+          href="#" 
+          class="w-8 h-8 flex items-center justify-center bg-zinc-100 hover:bg-[#0D0F0F] hover:text-white transition-all duration-200"
+          aria-label="Back to Top"
+        >
+          ↑
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Monumental Architectural Continuous Marquee (Official Logo Typography) -->
+  <div class="pt-8 pb-4 overflow-hidden select-none pointer-events-none w-full border-t border-brand-border/40">
+    <div class="marquee-track flex whitespace-nowrap will-change-transform">
+      <div class="marquee-content flex items-center shrink-0">
+        <div class="px-8 sm:px-14">
+          <PacificWestText class="h-14 sm:h-20 lg:h-28 w-auto text-zinc-200" />
+        </div>
+        <div class="px-8 sm:px-14">
+          <PacificWestText class="h-14 sm:h-20 lg:h-28 w-auto text-zinc-200" />
+        </div>
+        <div class="px-8 sm:px-14">
+          <PacificWestText class="h-14 sm:h-20 lg:h-28 w-auto text-zinc-200" />
+        </div>
+      </div>
+      <div class="marquee-content flex items-center shrink-0" aria-hidden="true">
+        <div class="px-8 sm:px-14">
+          <PacificWestText class="h-14 sm:h-20 lg:h-28 w-auto text-zinc-200" />
+        </div>
+        <div class="px-8 sm:px-14">
+          <PacificWestText class="h-14 sm:h-20 lg:h-28 w-auto text-zinc-200" />
+        </div>
+        <div class="px-8 sm:px-14">
+          <PacificWestText class="h-14 sm:h-20 lg:h-28 w-auto text-zinc-200" />
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marqueeContinuous 25s linear infinite;
+  }
+
+  @keyframes marqueeContinuous {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
+</style>

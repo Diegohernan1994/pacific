@@ -1,0 +1,62 @@
+---
+// CtaBanner.astro - 100% Arvune Dimensions & Animations
+---
+
+<section id="contact" class="relative py-28 sm:py-36 lg:py-40 overflow-hidden bg-[#0D0F0F] flex items-center justify-center">
+  <!-- Architectural House Mark Watermark (Vector, Responsive, Translucent) -->
+  <div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none select-none overflow-hidden" aria-hidden="true">
+    <svg 
+      viewBox="78 0 196 138" 
+      fill="currentColor"
+      class="w-[320px] sm:w-[540px] lg:w-[740px] max-w-[85vw] h-auto text-white/[0.07] transition-transform duration-700 hover:scale-105"
+    >
+      <polygon points="209.5,135.51 209.5,48.05 129.07,105.04 129.07,135.51 188.62,135.51 188.62,18.77 269.46,82.84 269.46,135.51 272.15,135.51 272.15,81.54 185.94,13.22 185.94,132.83 131.76,132.83 131.76,106.43 206.82,53.24 206.82,135.51 209.5,135.51"/>
+      <polyline points="178.59,72.55 178.59,0 175.9,0 175.9,72.55"/>
+      <polyline points="188.19,1.48 80.76,87.58 82.44,89.67 189.87,3.57"/>
+      <polyline points="104.06,60.32 104.06,135.51 106.74,135.51 106.74,60.32"/>
+      <polyline points="176.46,42.72 86.16,108.07 87.73,110.25 178.03,44.9"/>
+    </svg>
+  </div>
+
+  <!-- Centered Content (Arvune Signature Layout) -->
+  <div class="relative z-10 arvune-container max-w-4xl text-center space-y-8 text-white">
+    <!-- Tag (Clean, No Border) -->
+    <div class="reveal inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-zinc-300">
+      <span class="w-1.5 h-1.5 rounded-full bg-brand-red animate-pulse"></span>
+      <span>Ready When You Are</span>
+    </div>
+
+    <!-- Massive Heading -->
+    <h2 class="reveal delay-1 text-4xl sm:text-6xl lg:text-[68px] font-semibold uppercase tracking-[-0.05em] text-white leading-[1.08]">
+      Create A Space That Feels<br />
+      Distinctly Yours.
+    </h2>
+
+    <!-- Subtitle -->
+    <p class="reveal delay-2 text-sm sm:text-base text-zinc-300 max-w-xl mx-auto leading-relaxed font-normal">
+      Your journey toward an exceptional living space begins with a conversation. Let's discuss your architectural vision, municipal site parameters, and project timeline.
+    </p>
+
+    <!-- Arvune 52px Dual Actions -->
+    <div class="reveal delay-3 pt-4 flex flex-wrap items-center justify-center gap-4">
+      <a 
+        href="tel:8883984499" 
+        class="arvune-btn-white group"
+      >
+        <span>Call (888) 398-4499</span>
+        <span class="arvune-arrow-box-dark">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </span>
+      </a>
+
+      <a 
+        href="mailto:info@pwhbuilders.com" 
+        class="h-[52px] inline-flex items-center px-6 border border-white/25 text-white text-xs font-bold uppercase tracking-wider hover:bg-white/10 hover:border-white/50 transition-all backdrop-blur-sm"
+      >
+        <span>Email Us</span>
+      </a>
+    </div>
+  </div>
+</section>

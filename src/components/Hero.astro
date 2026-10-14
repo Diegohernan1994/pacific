@@ -1,0 +1,169 @@
+---
+// Hero.astro - 100% Arvune Dimensions & Animations
+---
+
+<section class="relative min-h-screen lg:h-screen lg:max-h-[960px] flex flex-col justify-end overflow-hidden pt-28 pb-12 sm:pt-36 sm:pb-16 lg:pb-24">
+  <!-- Full-Screen Hero Background Architectural Photo -->
+  <div class="absolute inset-0 z-0">
+    <img 
+      src="/assets/images/BD22_1-1-scaled.jpg" 
+      alt="Pacific West Home Builders Luxury Architecture Los Angeles" 
+      class="w-full h-full object-cover object-center filter brightness-[0.82] arvune-img-zoom"
+      loading="eager"
+      decoding="async"
+    />
+    <!-- Arvune Architectural Vignette Gradients -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/30"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/40"></div>
+  </div>
+
+  <!-- Content Container (max-w-7xl with px-6 sm:px-10) -->
+  <div class="relative z-10 arvune-container w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-end">
+      
+      <!-- Left Column: Editorial Headline & Actions -->
+      <div class="lg:col-span-7 space-y-6">
+        <!-- Arvune Section Tag (Clean, No Border) -->
+        <div class="reveal inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-zinc-300">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-red animate-pulse"></span>
+          <span>General Contractor · Los Angeles County</span>
+        </div>
+
+        <!-- Arvune Massive Headline (Appear Reveal Delay 1) -->
+        <h1 class="reveal delay-1 text-4xl sm:text-6xl lg:text-[72px] font-semibold uppercase tracking-[-0.05em] text-white leading-[1.05]">
+          Where Your Vision Becomes Our Master<span class="text-brand-red">piece</span>
+        </h1>
+
+        <!-- Editorial Subtitle (Appear Reveal Delay 2) -->
+        <p class="reveal delay-2 text-sm sm:text-base text-zinc-300 max-w-xl leading-relaxed font-normal">
+          Building luxury that lasts a lifetime. At Pacific West Home Builders, we specialize in high-end residential remodeling, architectural ADUs, and complete new custom home builds across Los Angeles.
+        </p>
+
+        <!-- Arvune Signature Buttons (Height: 52px) -->
+        <div class="reveal delay-3 pt-2 flex flex-wrap items-center gap-4">
+          <a 
+            href="#projects" 
+            class="arvune-btn-white group"
+          >
+            <span>Explore Our Work</span>
+            <span class="arvune-arrow-box-dark">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </span>
+          </a>
+
+          <a 
+            href="tel:8883984499" 
+            class="h-[52px] inline-flex items-center px-6 border border-white/20 text-white text-xs font-bold uppercase tracking-wider hover:bg-white/10 hover:border-white/40 transition-all backdrop-blur-sm"
+          >
+            <span>Call (888) 398-4499</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Arvune Floating Showcase Card (Width: 420px max, Desktop Only) -->
+      <div class="hidden lg:block lg:col-span-5 reveal delay-3">
+        <div class="bg-black/60 backdrop-blur-xl border border-white/15 p-6 text-white shadow-2xl space-y-4 max-w-[420px] lg:ml-auto">
+          <!-- Thumbnail Image -->
+          <div class="relative aspect-[16/10] overflow-hidden bg-zinc-900 border border-white/10 group">
+            <img 
+              id="hero-preview-img" 
+              src="/assets/images/charming-yellow-house-with-wooden-windows-green-grassy-garden-1.webp" 
+              alt="Custom ADU Pacific West" 
+              class="w-full h-full object-cover transition-opacity duration-300"
+              loading="eager"
+              decoding="async"
+            />
+            <div class="absolute top-3 left-3 px-2 py-0.5 bg-black/75 backdrop-blur-sm text-[10px] font-bold uppercase tracking-wider text-white" id="hero-preview-badge">
+              ADU & Guest House
+            </div>
+          </div>
+
+          <!-- Metadata -->
+          <div class="space-y-1.5">
+            <h2 id="hero-preview-title" class="text-sm font-bold uppercase tracking-wider text-white">
+              Custom ADU & Living Spaces
+            </h2>
+            <p id="hero-preview-desc" class="text-xs text-zinc-400 leading-relaxed font-normal">
+              Unlock the potential of your Los Angeles property with permitted, high-yielding secondary residences designed with architectural beauty.
+            </p>
+          </div>
+
+          <!-- Arvune 3-Category Toggle Bar -->
+          <div class="grid grid-cols-3 gap-1.5 pt-2 border-t border-white/10">
+            <button 
+              type="button"
+              class="hero-tab-btn active h-9 px-2 text-[10px] font-bold uppercase tracking-wider text-center bg-white text-brand-dark transition-all duration-200"
+              data-cat="adu"
+              data-title="Custom ADU & Living Spaces"
+              data-desc="Unlock the potential of your Los Angeles property with permitted, high-yielding secondary residences designed with architectural beauty."
+              data-badge="ADU & Guest House"
+              data-img="/assets/images/charming-yellow-house-with-wooden-windows-green-grassy-garden-1.webp"
+            >
+              ADUs
+            </button>
+            <button 
+              type="button"
+              class="hero-tab-btn h-9 px-2 text-[10px] font-bold uppercase tracking-wider text-center bg-white/10 text-zinc-300 hover:text-white hover:bg-white/20 transition-all duration-200"
+              data-cat="remodel"
+              data-title="Luxury Interior Remodeling"
+              data-desc="Chef-inspired kitchens, spa-grade master bathrooms, and bespoke living spaces with artisan finishes across Los Angeles."
+              data-badge="Remodeling"
+              data-img="/assets/images/Kitchen.jpg"
+            >
+              Remodeling
+            </button>
+            <button 
+              type="button"
+              class="hero-tab-btn h-9 px-2 text-[10px] font-bold uppercase tracking-wider text-center bg-white/10 text-zinc-300 hover:text-white hover:bg-white/20 transition-all duration-200"
+              data-cat="builds"
+              data-title="Custom Architectural New Builds"
+              data-desc="Ground-up architectural homes engineered for seismic resilience, Title 24 efficiency, and uncompromising luxury."
+              data-badge="New Builds"
+              data-img="/assets/images/BD28_1-scaled.jpg"
+            >
+              New Builds
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const buttons = document.querySelectorAll('.hero-tab-btn');
+  const img = document.getElementById('hero-preview-img') as HTMLImageElement;
+  const badge = document.getElementById('hero-preview-badge');
+  const title = document.getElementById('hero-preview-title');
+  const desc = document.getElementById('hero-preview-desc');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => {
+        b.classList.remove('bg-white', 'text-brand-dark');
+        b.classList.add('bg-white/10', 'text-zinc-300');
+      });
+      btn.classList.add('bg-white', 'text-brand-dark');
+      btn.classList.remove('bg-white/10', 'text-zinc-300');
+
+      const newImg = btn.getAttribute('data-img');
+      const newTitle = btn.getAttribute('data-title');
+      const newDesc = btn.getAttribute('data-desc');
+      const newBadge = btn.getAttribute('data-badge');
+
+      if (img && newImg) {
+        img.style.opacity = '0';
+        setTimeout(() => {
+          img.src = newImg;
+          img.style.opacity = '1';
+        }, 150);
+      }
+      if (title && newTitle) title.textContent = newTitle;
+      if (desc && newDesc) desc.textContent = newDesc;
+      if (badge && newBadge) badge.textContent = newBadge;
+    });
+  });
+</script>
